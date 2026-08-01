@@ -1,8 +1,27 @@
 aid: sessionai
-name: Sessionai
-description: 'Sessionai is a company surfaced as a portfolio company of norwest-venture-partners and added
-  to the API Evangelist network as a stub for enrichment. Sector: unknown. This profile is a lead awaiting
-  the enrichment pipeline.'
+accessModel:
+  pricing: unknown
+  onboarding: unknown
+  trial: false
+  try_now: false
+  public: false
+  label: Unknown
+  confidence: low
+  source: []
+  generated: '2026-07-22'
+  method: derived
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/sessionai.png
+name: Session AI
+description: 'Session AI is an ecommerce AI platform that uses agentic decisioning to optimize
+  promotions and customer experiences in real time. Its Session Marketing Agent predicts
+  in-session visitor intent and behavior, then delivers personalized offers, nudges, and
+  messages to maximize revenue, conversions, and profit margins for retail, travel and
+  hospitality, and telecom brands. The platform integrates via tag managers (Google Tag
+  Manager, Tealium), an SDK, server-to-server calls, and prebuilt plugins/cartridges,
+  advertising sub-50ms decision latency, no PII collection, and SOC 2 aligned controls.
+  It was surfaced as a portfolio company of Norwest Venture Partners; no public developer
+  portal, API reference, or OpenAPI is currently published (integration is arranged during
+  onboarding).'
 url: https://raw.githubusercontent.com/api-evangelist/sessionai/refs/heads/main/apis.yml
 x-type: company
 x-source: vc-portfolio
@@ -12,10 +31,16 @@ x-tier: stub
 x-tier-reason: portfolio-lead
 specificationVersion: '0.20'
 created: '2026-07-17'
-modified: '2026-07-17'
+modified: '2026-07-21'
 tags:
 - Company
-- Unknown
+- Artificial Intelligence
+- Ecommerce
+- Retail
+- Personalization
+- Marketing
+- Agentic AI
+- Decisioning
 apis: []
 maintainers:
 - FN: Kin Lane
@@ -25,3 +50,18 @@ maintainers:
 common:
 - type: Website
   url: https://sessionai.com
+- type: Blog
+  url: https://sessionai.com/blog
+- type: Support
+  url: https://sessionai.com/contact-us
+- type: PrivacyPolicy
+  url: https://sessionai.com/privacy-policy
+- type: TermsOfService
+  url: https://sessionai.com/terms
+- type: DomainSecurity
+  url: security/sessionai-domain-security.yml
+x-enrichment:
+  date: '2026-07-21'
+  status: minimal
+  artifacts_added: 1
+  pass: local-v1
