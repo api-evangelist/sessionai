@@ -1,37 +1,40 @@
 aid: sessionai
 accessModel:
   pricing: unknown
-  onboarding: unknown
+  onboarding: sales-assisted
   trial: false
   try_now: false
   public: false
-  label: Unknown
-  confidence: low
-  source: []
-  generated: '2026-07-22'
-  method: derived
+  label: Sales-assisted
+  confidence: medium
+  source:
+  - https://sessionai.com/request-a-demo
+  - https://devguide.zineone.com/docs/integration-onboarding-process
+  generated: '2026-08-13'
+  method: searched
 image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/sessionai.png
 name: Session AI
-description: 'Session AI is an ecommerce AI platform that uses agentic decisioning to optimize
-  promotions and customer experiences in real time. Its Session Marketing Agent predicts
-  in-session visitor intent and behavior, then delivers personalized offers, nudges, and
-  messages to maximize revenue, conversions, and profit margins for retail, travel and
-  hospitality, and telecom brands. The platform integrates via tag managers (Google Tag
-  Manager, Tealium), an SDK, server-to-server calls, and prebuilt plugins/cartridges,
-  advertising sub-50ms decision latency, no PII collection, and SOC 2 aligned controls.
-  It was surfaced as a portfolio company of Norwest Venture Partners; no public developer
-  portal, API reference, or OpenAPI is currently published (integration is arranged during
-  onboarding).'
+description: 'Session AI (formerly ZineOne) is an ecommerce AI platform that uses agentic
+  decisioning to optimize promotions and customer experiences in real time. Its Session
+  Marketing Agent predicts in-session visitor intent and behavior, then delivers personalized
+  offers, nudges, and messages to maximize revenue, conversions, and profit margins for
+  retail, travel and hospitality, and telecom brands. The platform integrates via tag
+  managers (Google Tag Manager, Tealium), a CDN-delivered HTML5/JavaScript SDK, Android
+  and iOS SDKs, server-to-server REST calls, and prebuilt plugins/cartridges, advertising
+  sub-50ms decision latency, no PII in scope, and SOC 2 aligned controls. Session AI
+  publishes a public developer guide and REST API reference under its legacy ZineOne
+  domain covering nine documented operations — send events, retrieve content, call
+  microservices, stream and cube queries, CCPA profile opt-in/opt-out, and profile and
+  activity retrieval — authenticated with an apikey header. It also operates an
+  OAuth-protected remote MCP server at https://sessionai.com/mcp for agent access.'
 url: https://raw.githubusercontent.com/api-evangelist/sessionai/refs/heads/main/apis.yml
 x-type: company
 x-source: vc-portfolio
 x-backed-by:
 - norwest-venture-partners
-x-tier: stub
-x-tier-reason: portfolio-lead
 specificationVersion: '0.20'
 created: '2026-07-17'
-modified: '2026-07-21'
+modified: '2026-08-13'
 tags:
 - Company
 - Artificial Intelligence
@@ -41,7 +44,51 @@ tags:
 - Marketing
 - Agentic AI
 - Decisioning
-apis: []
+- Customer Data
+- Events
+- Real Time
+- MCP
+apis:
+- name: Session AI Platform REST API
+  description: 'Public REST API for the Session AI (ZineOne) platform. Documented operations
+    cover sending events into the platform from any channel, retrieving hosted content,
+    calling customer-authored microservices, running stream and cube queries, CCPA profile
+    opt-in and opt-out, and retrieving customer profile details and activity. Requests
+    are authenticated with an apikey header (or a server-generated accesstoken header);
+    the profile and activity endpoints require a valid Session AI portal login.'
+  humanURL: https://devguide.zineone.com/docs/rest-api-reference
+  baseURL: https://cloud.zineone.com/c3
+  tags:
+  - Events
+  - Customer Data
+  - Personalization
+  - Queries
+  - Privacy
+  properties:
+  - type: APIReference
+    url: https://devguide.zineone.com/docs/rest-api-reference
+  - type: Documentation
+    url: https://devguide.zineone.com/
+  - type: Authentication
+    url: authentication/sessionai-authentication.yml
+  - type: ErrorCatalog
+    url: errors/sessionai-problem-types.yml
+- name: Session AI MCP Server
+  description: 'Remote Model Context Protocol server operated by Session AI at
+    https://sessionai.com/mcp. The endpoint answers with an RFC 9728 OAuth challenge
+    (WWW-Authenticate: Bearer realm="mcp") and publishes protected-resource metadata
+    naming Session AI as the resource; tools/list requires an authenticated bearer token,
+    so the live tool schemas could not be enumerated anonymously.'
+  humanURL: https://sessionai.com/capabilities/agentic-ai
+  baseURL: https://sessionai.com/mcp
+  tags:
+  - MCP
+  - Agentic AI
+  properties:
+  - type: MCPServer
+    url: mcp/sessionai-mcp.yml
+  - type: OAuthScopes
+    url: scopes/sessionai-scopes.yml
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
@@ -58,10 +105,56 @@ common:
   url: https://sessionai.com/privacy-policy
 - type: TermsOfService
   url: https://sessionai.com/terms
+- type: DeveloperPortal
+  url: https://devguide.zineone.com/
+- type: Documentation
+  url: https://docs.zineone.com/
+- type: APIReference
+  url: https://devguide.zineone.com/docs/rest-api-reference
+- type: GettingStarted
+  url: https://devguide.zineone.com/docs/introduction-to-html5
+- type: Login
+  url: https://cloud.zineone.com/c3
+- type: StatusPage
+  url: https://status.sessionai.com/
+- type: Compliance
+  url: https://sessionai.com/capabilities/privacy-and-fairness
+- type: MCPServer
+  url: mcp/sessionai-mcp.yml
+- type: LLMsTxt
+  url: llms/sessionai-llms.txt
+- type: WellKnown
+  url: well-known/sessionai-well-known.yml
+- type: Authentication
+  url: authentication/sessionai-authentication.yml
+- type: OAuthScopes
+  url: scopes/sessionai-scopes.yml
+- type: Conventions
+  url: conventions/sessionai-conventions.yml
+- type: ErrorCatalog
+  url: errors/sessionai-problem-types.yml
+- type: Lifecycle
+  url: lifecycle/sessionai-lifecycle.yml
+- type: Conformance
+  url: conformance/sessionai-conformance.yml
+- type: Packages
+  url: packages/sessionai-packages.yml
+- type: SDKs
+  url: packages/sessionai-packages.yml
+- type: Components
+  url: components/sessionai-components.yml
+- type: Sandbox
+  url: sandbox/sessionai-sandbox.yml
+- type: Webhooks
+  url: asyncapi/sessionai-webhooks.yml
+- type: RateLimits
+  url: rate-limits/sessionai-rate-limits.yml
+- type: Plans
+  url: plans/sessionai-plans-pricing.yml
 - type: DomainSecurity
   url: security/sessionai-domain-security.yml
 x-enrichment:
-  date: '2026-07-21'
-  status: minimal
-  artifacts_added: 1
+  date: '2026-08-13'
+  status: enriched
+  artifacts_added: 19
   pass: local-v1
