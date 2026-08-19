@@ -1,0 +1,46 @@
+generated: '2026-08-13'
+method: searched
+source: https://devguide.zineone.com/docs/rest-api-reference
+versioning:
+  scheme: uri-path
+  current: v1
+  docs: https://devguide.zineone.com/docs/rest-api-reference
+  detail: Public REST endpoints are versioned in the path as /public/api/v1/.
+deprecation:
+  policy_url: null
+  policy_published: false
+  sunset_header: false
+  detail: >-
+    No deprecation or sunset policy is published. The SDK docs make a related but weaker
+    commitment: the CDN "latest" build is described as "managed so as not to introduce
+    breaking changes", with self-hosting offered for customers who want to control upgrade
+    timing. That is a stability statement about one artifact, not an API deprecation policy.
+  source: https://devguide.zineone.com/docs/introduction-to-html5
+sla:
+  url: null
+  uptime_target: null
+  published: false
+status_page:
+  url: https://status.sessionai.com/
+  platform: Site24x7 StatusIQ
+  http_status: 200
+  verified: probed
+  fetched: '2026-08-13'
+changelog:
+  url: null
+  published: false
+  detail: >-
+    No changelog found. /changelog 404s on sessionai.com and on both ReadMe documentation
+    hosts, and neither documentation llms.txt lists a changelog page.
+brand_lifecycle:
+  detail: >-
+    The company renamed from ZineOne to Session AI. The marketing site is sessionai.com,
+    but the entire developer surface still lives on zineone.com hosts —
+    docs.sessionai.com issues a 301 to docs.zineone.com — and the SDK global is still
+    named ZineOne. Documentation content has been updated to say "Session AI" throughout
+    while the hostnames, URL paths, and JavaScript API names remain ZineOne-era.
+  evidence:
+  - url: https://docs.sessionai.com/
+    http_status: 301
+    location: https://docs.zineone.com/
+deprecated_operations: []

@@ -1,0 +1,36 @@
+generated: '2026-08-13'
+method: probed
+source: https://jsaqyxhgmkgcyaocjnzz.supabase.co/auth/v1/.well-known/oauth-authorization-server
+note: >-
+  Scopes are read from the live RFC 8414 authorization-server metadata that Session AI's
+  own RFC 9728 protected-resource metadata names for its MCP server. Session AI publishes
+  no scopes reference page of its own, and these are the generic OIDC scopes advertised by
+  the authorization server rather than Session AI product permissions. The REST platform
+  API is API-key authenticated and has no OAuth scope surface at all.
+applies_to: https://sessionai.com/mcp
+schemes:
+- name: mcp-oauth
+  issuer: https://jsaqyxhgmkgcyaocjnzz.supabase.co/auth/v1
+  source: well-known/sessionai-oauth-authorization-server.json
+  flows:
+  - flow: authorizationCode
+    authorizationUrl: https://jsaqyxhgmkgcyaocjnzz.supabase.co/auth/v1/oauth/authorize
+    tokenUrl: https://jsaqyxhgmkgcyaocjnzz.supabase.co/auth/v1/oauth/token
+scopes:
+- scope: openid
+  description: OpenID Connect sign-in; returns an ID token for the authenticated subject.
+  flows: [authorizationCode]
+- scope: profile
+  description: Access to the authenticated user's basic profile claims.
+  flows: [authorizationCode]
+- scope: email
+  description: Access to the authenticated user's email claim.
+  flows: [authorizationCode]
+- scope: phone
+  description: Access to the authenticated user's phone claim.
+  flows: [authorizationCode]
+- scope: offline_access
+  description: Issues a refresh token so the client can act without the user present.
+  flows: [authorizationCode]
+scope_count: 5
+product_scopes_published: false

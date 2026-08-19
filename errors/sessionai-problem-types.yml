@@ -1,0 +1,60 @@
+generated: '2026-08-13'
+method: searched
+source: https://devguide.zineone.com/docs/rest-api-reference
+format: custom-json
+envelope:
+  media_type: application/json
+  shape: '{"message": "<string>", "status": <int>}'
+  fields:
+  - name: message
+    type: string
+    description: Human-readable error message.
+  - name: status
+    type: integer
+    description: HTTP status code, repeated in the body.
+  rfc9457: false
+  note: >-
+    Session AI does not use application/problem+json. The envelope above was observed live
+    on 2026-08-13 on an unauthenticated request to the documented event endpoint.
+note: >-
+  Session AI publishes a single status-code table on its API Reference page rather than a
+  named error registry, so there are no error codes or error types to catalog — only HTTP
+  statuses. The table as published lists "202 OK" for success, which appears to be a typo
+  for 200; both rows are recorded verbatim rather than corrected.
+problems:
+- status: 200
+  title: OK
+  published_as: '202 OK'
+  detail: The request has succeeded.
+  source: https://devguide.zineone.com/docs/rest-api-reference
+  note: >-
+    Published in the docs table as "202 OK". Recorded here as 200 with the verbatim
+    published label, because the same table separately lists 202 Accepted.
+- status: 202
+  title: Accepted
+  detail: The request has been accepted for processing.
+  source: https://devguide.zineone.com/docs/send-events
+  operations:
+  - POST /public/api/v1/event
+- status: 400
+  title: Bad Request
+  detail: The server will not process the request if it is incorrect or corrupt.
+  source: https://devguide.zineone.com/docs/rest-api-reference
+- status: 401
+  title: Unauthorized
+  detail: >-
+    Returned by the remote MCP server at https://sessionai.com/mcp to callers without a
+    bearer token, with a WWW-Authenticate challenge pointing at the protected-resource
+    metadata. Body is {"error":"unauthorized"} — a different envelope from the REST API.
+  source: https://sessionai.com/mcp
+  method: probed
+  envelope: '{"error":"unauthorized"}'
+- status: 404
+  title: Not Found
+  detail: >-
+    Observed on the documented public REST paths when called anonymously against the
+    example cloud host. Body {"message": "An error occurred.","status": 404}.
+  source: https://cloud.zineone.com/c3/public/api/v1/event
+  method: probed
+  documented: false
+problem_count: 5

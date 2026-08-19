@@ -1,0 +1,37 @@
+generated: '2026-08-13'
+method: searched
+source: https://devguide.zineone.com/docs/introduction-to-html5
+note: >-
+  Session AI publishes no self-serve sandbox, no test credentials, and no magic test
+  values. What it does document is a namespace-level separation between production and
+  sandbox, provisioned by a human. Nothing below is invented; no test key, token, or
+  identifier is published by the provider to record.
+separation:
+  model: namespace
+  environments:
+  - name: production
+    detail: Production namespace with its own master API key and console login.
+  - name: sandbox
+    detail: >-
+      Separate sandbox namespace with its own logins and API keys. The docs recommend
+      maintaining both for "mission critical deployments".
+  provisioning: >-
+    Sandbox namespaces are not self-serve. The docs instruct the customer to "ask your
+    Session AI Solutions Architect or Customer Success Manager to create a sandbox
+    namespace and associated API keys".
+  key_prefixes: []
+  key_prefix_note: No test-vs-live key prefix convention is documented.
+test_values:
+  published: false
+  detail: >-
+    No test cards, test identifiers, fixture generators, time simulation, or trigger
+    tooling are documented. Session AI is not a payments provider and publishes no
+    equivalent magic-value range.
+debug_tooling:
+- name: Chrome Dev Tool Extension
+  url: https://devguide.zineone.com/docs/chrome-dev-tool-extension
+  detail: Browser extension for inspecting the SDK integration.
+- name: Debug mode
+  detail: SDK debug message display toggled with ZineOne.isDebugOn(flag).
+  url: https://devguide.zineone.com/docs/debug-the-html5-sdk
+self_serve: false

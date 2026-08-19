@@ -1,0 +1,22 @@
+generated: '2026-08-13'
+method: searched
+source: https://sessionai.com/
+plan_count: 0
+note: >-
+  Session AI publishes no pricing. There is no pricing page — https://sessionai.com/pricing
+  returns 404 and no pricing link appears anywhere in the site navigation, which offers
+  "Request a demo" and "Contact us" instead. No tiers, no quotas, no overage schedule, and
+  no free tier or trial are published. Access is sales-assisted end to end: the developer
+  guide's onboarding process describes an integration arranged with a Session AI Solutions
+  Architect, and sandbox namespaces must be requested from a named human.
+plans: []
+model: enterprise-contact-sales
+signup:
+  self_serve: false
+  demo_request: https://sessionai.com/request-a-demo
+  contact: https://sessionai.com/contact-us
+evidence:
+- url: https://sessionai.com/pricing
+  status: 404
+- url: https://sessionai.com/request-a-demo
+  status: 200

@@ -1,0 +1,23 @@
+generated: '2026-08-13'
+method: searched
+source: https://devguide.zineone.com/docs/rest-api-reference
+limit_count: 0
+note: >-
+  Session AI documents no rate limits. The API Reference page publishes only a three-row
+  status-code table (success, accepted, bad request) with no 429, no quota, and no
+  throttling language; none of the nine operation pages mentions limits, and neither
+  documentation llms.txt lists a limits or quotas page. No rate-limit response headers are
+  documented, and none could be observed live because the documented public endpoints
+  return 404 to anonymous callers on the example cloud host. The only published throughput
+  figure is a performance claim, not a limit: sub-50ms decision latency.
+limits: []
+headers:
+  documented: []
+  observed: []
+  note: >-
+    No X-RateLimit-*, RateLimit-*, or Retry-After header is documented or was observed.
+exhaustion_status: null
+related_capacity_claims:
+- claim: Sub-50ms decision latency
+  source: https://sessionai.com/capabilities/platform-integration
+  note: A latency claim, not a rate limit or quota.

@@ -1,0 +1,55 @@
+generated: '2026-08-13'
+method: probed
+status: published
+source: https://sessionai.com/mcp
+server:
+  name: Session AI
+  transport: http
+  url: https://sessionai.com/mcp
+deployment:
+  mode: remote
+  endpoint: https://sessionai.com/mcp
+  auth: oauth
+  verified: probed
+evidence:
+  fetched: '2026-08-13'
+  get:
+    url: https://sessionai.com/mcp
+    http_status: 401
+    content_type: application/json
+    body: '{"error":"unauthorized"}'
+    www_authenticate: >-
+      Bearer realm="mcp", resource_metadata="https://sessionai.com/.well-known/oauth-protected-resource"
+    access_control_expose_headers: WWW-Authenticate, Mcp-Session-Id, Mcp-Protocol-Version
+  post_tools_list:
+    url: https://sessionai.com/mcp
+    method: POST
+    body: '{"jsonrpc":"2.0","id":1,"method":"tools/list"}'
+    http_status: 401
+  control_probe:
+    url: https://sessionai.com/zzz-not-a-real-path
+    http_status: 404
+    note: >-
+      Control path returns 404, so /mcp is a genuine dedicated route and not a
+      single-page-app catch-all answering 200/401 to everything.
+authorization:
+  protected_resource_metadata: https://sessionai.com/.well-known/oauth-protected-resource
+  resource: https://sessionai.com/mcp
+  resource_name: Session AI
+  authorization_servers:
+  - https://jsaqyxhgmkgcyaocjnzz.supabase.co/auth/v1
+  bearer_methods_supported:
+  - header
+  dynamic_client_registration: https://jsaqyxhgmkgcyaocjnzz.supabase.co/auth/v1/oauth/clients/register
+  spec: RFC 9728 OAuth 2.0 Protected Resource Metadata
+tools: []
+tools_gated: true
+tools_note: >-
+  tools/list returns HTTP 401 to an anonymous caller, so the live tool set and per-tool
+  inputSchema could not be enumerated. Session AI publishes no MCP tool list in its docs
+  or llms.txt either, so nothing is recorded here rather than guessing. Enumerating the
+  tools requires an authenticated bearer token obtained through the Supabase-hosted
+  authorization server named in the protected-resource metadata.
+ownership_note: >-
+  The endpoint is served from Session AI's own apex domain and its protected-resource
+  metadata self-identifies as "Session AI", so the server belongs to this company.

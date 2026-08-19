@@ -1,0 +1,77 @@
+generated: '2026-08-13'
+method: searched
+source: https://devguide.zineone.com/docs/introduction-to-html5
+note: >-
+  Session AI ships first-party SDKs but publishes none of them to a public package
+  registry. The web SDK is a single CDN-hosted script; the Android and iOS SDKs are
+  downloaded from the "Download SDK" tab inside the authenticated console. npm, PyPI,
+  Maven Central, RubyGems, crates.io, NuGet, pkg.go.dev, Packagist and CocoaPods were all
+  checked and none carries a Session AI or ZineOne package.
+packages:
+- language: javascript
+  registry: cdn
+  name: z1m.js
+  distribution: https://cdn.zineone.com/cloud/latest/z1m.js
+  url: https://devguide.zineone.com/docs/introduction-to-html5
+  install: '<script type="text/javascript" src="https://cdn.zineone.com/cloud/latest/z1m.js"></script>'
+  official: true
+  version: null
+  published: null
+  version_note: >-
+    UNPINNED. The only distribution URL the docs publish floats to "latest", so there is no
+    version a consumer can pin or even name — a caller cannot tell which build they loaded,
+    and neither can we. The file carries no version string in its body. The strongest
+    currency signal available is the CDN Last-Modified header, 2025-04-29, with ETag
+    d9318bb425bcfa893559ac19a4f52896 and a 24,304-byte body, observed 2026-08-13. The docs
+    describe this build as "managed so as not to introduce breaking changes" and offer
+    self-hosting as the alternative for customers who want to control upgrades.
+  last_modified: '2025-04-29'
+  size_bytes: 24304
+  http_status: 200
+  global: ZineOne
+  api_reference: https://devguide.zineone.com/docs/zineone-api-specification
+- language: java
+  registry: null
+  name: Session AI SDK for Android
+  official: true
+  version: null
+  published: null
+  version_note: >-
+    No registry to query. Distributed as a JAR downloaded from the Download SDK tab of the
+    authenticated Session AI console, so no public version or release date exists. Maven
+    Central returned numFound 0 for "zineone" on 2026-08-13.
+  distribution: console-download
+  url: https://docs.zineone.com/docs/android-sdk
+  official_note: Documented as a first-party JAR bundled with property files and sample projects.
+- language: objective-c
+  registry: null
+  name: Session AI SDK for iOS
+  official: true
+  version: null
+  published: null
+  version_note: >-
+    No registry to query. Distributed via the same authenticated console download.
+    CocoaPods trunk returned 404 for both ZineOne and SessionAI on 2026-08-13.
+  distribution: console-download
+  url: https://docs.zineone.com/docs/ios-sdk
+  official_note: Objective-C library; documented as integrating with Swift applications too.
+registries_checked:
+- registry: npm
+  queries: [zineone, sessionai, session-ai, '@zineone/sdk']
+  result: 404 on all
+- registry: pypi
+  queries: [zineone, sessionai]
+  result: 404 on all
+- registry: maven-central
+  queries: [zineone]
+  result: numFound 0
+- registry: cocoapods
+  queries: [ZineOne, SessionAI]
+  result: 404 on all
+- registry: github
+  queries: [github.com/ZineOne]
+  result: >-
+    Organization exists (id 16256720) but has 0 public repositories and no name, blog or
+    description set, so it is not wired as a GitHubOrganization pointer.
+official_sdk_count: 3
+registry_published_count: 0

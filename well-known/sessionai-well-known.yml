@@ -1,0 +1,96 @@
+generated: '2026-08-13'
+method: probed
+source: live GET probes of /.well-known/* on every Session AI / ZineOne host
+note: >-
+  Probed five well-known paths across five hosts (sessionai.com, cloud.zineone.com,
+  devguide.zineone.com, docs.zineone.com, cdn.zineone.com). Only ONE real document is
+  served: the RFC 9728 OAuth protected-resource metadata for the Session AI remote MCP
+  server, discovered from the WWW-Authenticate challenge on https://sessionai.com/mcp.
+  Its body names "resource_name": "Session AI" and points at a Supabase-hosted
+  authorization server; that authorization-server metadata is saved alongside it for the
+  authentication/ and scopes/ artifacts even though it is served from the Supabase host
+  rather than a Session AI host. Every other path 404s (cdn.zineone.com is an S3 origin
+  that answers 403 application/xml to any unknown key). No security.txt, no api-catalog,
+  no ai-plugin.json, no agent card.
+hosts:
+- host: https://sessionai.com
+  documents:
+  - path: /.well-known/oauth-protected-resource
+    status: 200
+    content_type: application/json
+    file: sessionai-oauth-protected-resource.json
+  - path: /.well-known/security.txt
+    status: 404
+  - path: /.well-known/openid-configuration
+    status: 404
+  - path: /.well-known/oauth-authorization-server
+    status: 404
+  - path: /.well-known/api-catalog
+    status: 404
+  - path: /.well-known/ai-plugin.json
+    status: 404
+  - path: /.well-known/agent-card.json
+    status: 404
+  - path: /.well-known/agent.json
+    status: 404
+- host: https://cloud.zineone.com
+  documents:
+  - path: /.well-known/security.txt
+    status: 404
+  - path: /.well-known/openid-configuration
+    status: 404
+  - path: /.well-known/oauth-authorization-server
+    status: 404
+  - path: /.well-known/api-catalog
+    status: 404
+  - path: /.well-known/ai-plugin.json
+    status: 404
+  - path: /.well-known/agent-card.json
+    status: 404
+  - path: /.well-known/agent.json
+    status: 404
+- host: https://devguide.zineone.com
+  documents:
+  - path: /.well-known/security.txt
+    status: 404
+  - path: /.well-known/openid-configuration
+    status: 404
+  - path: /.well-known/oauth-authorization-server
+    status: 404
+  - path: /.well-known/api-catalog
+    status: 404
+  - path: /.well-known/agent-card.json
+    status: 404
+  - path: /.well-known/agent.json
+    status: 404
+- host: https://docs.zineone.com
+  documents:
+  - path: /.well-known/security.txt
+    status: 404
+  - path: /.well-known/openid-configuration
+    status: 404
+  - path: /.well-known/oauth-authorization-server
+    status: 404
+  - path: /.well-known/api-catalog
+    status: 404
+  - path: /.well-known/agent-card.json
+    status: 404
+  - path: /.well-known/agent.json
+    status: 404
+- host: https://cdn.zineone.com
+  note: S3 origin; answers 403 application/xml to every unknown key, not a document surface
+  documents:
+  - path: /.well-known/security.txt
+    status: 403
+  - path: /.well-known/agent-card.json
+    status: 403
+referenced_authorization_server:
+  host: https://jsaqyxhgmkgcyaocjnzz.supabase.co
+  path: /auth/v1/.well-known/oauth-authorization-server
+  status: 200
+  file: sessionai-oauth-authorization-server.json
+  note: >-
+    Not a Session AI host. Saved because Session AI's own protected-resource metadata
+    names it as the authorization server for the MCP resource.
+agent_card_found: false
+security_txt_found: false

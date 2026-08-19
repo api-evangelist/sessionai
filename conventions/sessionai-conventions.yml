@@ -1,0 +1,78 @@
+generated: '2026-08-13'
+method: searched
+source: https://devguide.zineone.com/docs/rest-api-reference
+note: >-
+  Cross-cutting semantics read from the published developer guide and from live
+  unauthenticated probes of the documented endpoints. Session AI publishes no OpenAPI, so
+  nothing here is derived from a spec.
+authentication:
+  style: api-key-header
+  header: apikey
+  alternative_header: accesstoken
+  detail: >-
+    Every public REST operation takes the API key in an apikey request header alongside
+    Content-Type. Two console endpoints (profile detail, activity) use a portal session
+    instead. See authentication/sessionai-authentication.yml.
+base_url:
+  documented: https://cloud.zineone.com/c3
+  templated: true
+  template_form: http://<cloud>/public/api/v1/...
+  detail: >-
+    The docs write the host as <cloud>, a per-tenant cloud host; cloud.zineone.com is the
+    example instance used throughout the developer guide. Publicly accessible microservices
+    additionally require a namespace query parameter identifying the tenant
+    (?namespace=<namespace>), which the docs say to obtain from a Session AI Cloud
+    Administrator.
+versioning:
+  scheme: uri-path
+  current: v1
+  detail: Public endpoints are versioned in the path as /public/api/v1/.
+  header_versioning: false
+idempotency:
+  supported: false
+  detail: >-
+    No idempotency key, header, or retry-safety contract is documented anywhere in the
+    developer guide. Event ingest is fire-and-forget and answers 202 Accepted, so duplicate
+    submissions are not deduplicated by any published mechanism.
+pagination:
+  supported: false
+  detail: >-
+    No pagination contract is documented. The activity endpoint bounds results with tunit
+    and tvalue (unit and quantity of time) rather than cursors or offsets.
+  params:
+  - tunit
+  - tvalue
+error_envelope:
+  format: custom-json
+  media_type: application/json
+  shape: '{"message": "<string>", "status": <int>}'
+  observed: >-
+    Confirmed live on 2026-08-13 by an unauthenticated GET of
+    https://cloud.zineone.com/c3/public/api/v1/event, which returned
+    {"message": "An error occurred.","status": 404}.
+  rfc9457: false
+  detail: See errors/sessionai-problem-types.yml.
+rate_limit_signaling:
+  documented: false
+  headers: []
+  detail: No rate-limit headers or quotas are documented. See rate-limits/sessionai-rate-limits.yml.
+request_tracing:
+  request_id_header: null
+  documented: false
+metadata:
+  supported: true
+  detail: >-
+    Arbitrary custom attributes can be attached to a customer profile as key/value pairs
+    via the SDK (ZineOne.addCustomerInfo) and via arbitrary body fields on event ingest.
+field_expansion:
+  supported: false
+content_type:
+  request: application/json
+  response: application/json
+  detail: Content-Type is a required header on every documented operation.
+cross_links:
+  authentication: authentication/sessionai-authentication.yml
+  errors: errors/sessionai-problem-types.yml
+  lifecycle: lifecycle/sessionai-lifecycle.yml
+  rate_limits: rate-limits/sessionai-rate-limits.yml
+  conformance: conformance/sessionai-conformance.yml

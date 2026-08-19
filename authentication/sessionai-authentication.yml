@@ -1,0 +1,84 @@
+generated: '2026-08-13'
+method: searched
+source: https://devguide.zineone.com/docs/rest-api-reference
+docs: https://devguide.zineone.com/docs/send-events
+note: >-
+  Session AI publishes no OpenAPI, so this profile is read from the published developer
+  guide (the parameter tables repeated on every REST operation page) plus the live
+  RFC 9728 protected-resource metadata for the MCP server. derive-authentication.py was
+  run and produced nothing, as there is no spec in openapi/ to derive from.
+summary:
+  types:
+  - apiKey
+  - oauth2
+  api_key_in:
+  - header
+  oauth2_flows:
+  - authorizationCode
+  surfaces:
+  - REST platform API — apikey header
+  - Remote MCP server — OAuth 2.0 bearer
+schemes:
+- name: apikey
+  type: apiKey
+  in: header
+  parameter_name: apikey
+  required: true
+  description: >-
+    The API key used to authenticate REST API calls. Master API keys are created in the
+    C3 console; additional keys can be issued per site, app, or partner channel. The same
+    key authenticates the HTML5/Android/iOS SDKs.
+  sources:
+  - https://devguide.zineone.com/docs/send-events
+  - https://docs.zineone.com/docs/create-manage-master-api-keys
+- name: accesstoken
+  type: apiKey
+  in: header
+  parameter_name: accesstoken
+  required: false
+  description: >-
+    Optional alternative to the apikey header. Access tokens are generated server-side.
+    Documented as interchangeable with apikey on every public REST operation.
+  sources:
+  - https://devguide.zineone.com/docs/send-events
+- name: microservice-api-key
+  type: apiKey
+  in: header
+  parameter_name: apikey
+  required: false
+  description: >-
+    Microservices are individually configured as public (no API key; the tenant namespace
+    is passed as a query parameter instead) or restricted (a per-microservice API key is
+    generated in the console).
+  sources:
+  - https://docs.zineone.com/docs/microservices
+- name: portal-session
+  type: http
+  scheme: session
+  description: >-
+    The /c3/data/profile/detail and /c3/data/activity/all endpoints are documented as
+    requiring a valid Session AI portal login rather than an API key.
+  sources:
+  - https://devguide.zineone.com/docs/retrieve-profile-details
+  - https://devguide.zineone.com/docs/retrieve-customer-activity
+- name: mcp-oauth
+  type: oauth2
+  description: >-
+    The remote MCP server at https://sessionai.com/mcp answers anonymous requests with
+    HTTP 401 and WWW-Authenticate: Bearer realm="mcp", advertising RFC 9728
+    protected-resource metadata. The authorization server supports dynamic client
+    registration (RFC 7591).
+  flows:
+  - flow: authorizationCode
+    authorizationUrl: https://jsaqyxhgmkgcyaocjnzz.supabase.co/auth/v1/oauth/authorize
+    tokenUrl: https://jsaqyxhgmkgcyaocjnzz.supabase.co/auth/v1/oauth/token
+    registrationUrl: https://jsaqyxhgmkgcyaocjnzz.supabase.co/auth/v1/oauth/clients/register
+    scopes:
+    - openid
+    - profile
+    - email
+    - phone
+    - offline_access
+  sources:
+  - well-known/sessionai-oauth-protected-resource.json
+  - well-known/sessionai-oauth-authorization-server.json

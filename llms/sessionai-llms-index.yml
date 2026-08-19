@@ -1,0 +1,28 @@
+generated: '2026-08-13'
+method: searched
+source: https://devguide.zineone.com/llms.txt
+note: >-
+  Session AI serves llms.txt from both of its ReadMe-hosted documentation sites. Both were
+  fetched and saved verbatim. These are ReadMe's auto-generated per-project indexes, but
+  they are served from the provider's own documentation hosts and each links the full set
+  of pages as .md, which is what an agent needs. sessionai.com itself returns 404 for
+  /llms.txt — the apex marketing domain publishes none.
+documents:
+- file: sessionai-llms.txt
+  url: https://devguide.zineone.com/llms.txt
+  http_status: 200
+  content_type: text/plain; charset=utf-8
+  size_bytes: 2417
+  scope: Developer Guide — SDK integration and the full REST API reference (28 pages)
+  primary: true
+- file: sessionai-user-guide-llms.txt
+  url: https://docs.zineone.com/llms.txt
+  http_status: 200
+  content_type: text/plain; charset=utf-8
+  size_bytes: 8481
+  scope: User Guide — console, experiences, segments, data channels, microservices
+  primary: false
+misses:
+- url: https://sessionai.com/llms.txt
+  http_status: 404
+generator: ReadMe

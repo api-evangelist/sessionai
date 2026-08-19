@@ -1,0 +1,49 @@
+generated: '2026-08-13'
+method: searched
+source: https://devguide.zineone.com/docs/z1widgets-api-specification
+note: >-
+  Client-side surfaces Session AI ships for rendering experiences in a customer's own page
+  or app. Distinct from the server-side integration in packages/.
+loaders:
+- name: z1m.js
+  url: https://cdn.zineone.com/cloud/latest/z1m.js
+  global: ZineOne
+  description: >-
+    The HTML5 SDK script, added to the head of every page. Also deployable through a tag
+    manager (Google Tag Manager, Tealium, or any standard tag management system) rather
+    than hand-placed.
+families:
+- family: Z1Widgets
+  description: >-
+    Session AI's widget API for rendering in-app and in-session messages. Retrieved from
+    the SDK with ZineOne.getZ1Widget(), which returns the widgets API used for rendering
+    in-app messages. Customers may bring their own widgets instead of using Session AI's.
+  reference: https://devguide.zineone.com/docs/z1widgets-api-specification
+- family: Messaging layer
+  description: >-
+    A messaging boundary created with ZineOne.createMessagingLayer() that scopes which
+    backend responses are accepted for display; messages arriving before the current
+    boundary are discarded. A default boundary is created at SDK initialization.
+  reference: https://devguide.zineone.com/docs/zineone-api-specification
+- family: Push notification and Appbox
+  description: >-
+    Browser push notification opt-in via ZineOne.enablePushNotification(flag) and an
+    in-app inbox whose read/unread counts are read with ZineOne.getInboxCount(callback).
+    Docs note web push is Chrome-only.
+  reference: https://devguide.zineone.com/docs/zineone-api-specification
+- family: Tagged content and UI control tags
+  description: >-
+    Declarative tagging of page elements so the platform can target and restyle content;
+    customer CSS stylesheets are managed in the console so rendered experiences conform to
+    the customer's branding.
+  reference: https://docs.zineone.com/docs/use-ui-control-tags
+- family: Chrome developer tool extension
+  description: A browser extension published for debugging the HTML5 SDK integration.
+  reference: https://devguide.zineone.com/docs/chrome-dev-tool-extension
+data_layer:
+  description: >-
+    A key/value data layer on the SDK (ZineOne.addData / ZineOne.getData) whose parameters
+    are read by Session AI tags when sending events to the cloud, plus
+    ZineOne.addCustomerInfo for arbitrary profile attributes.
+  reference: https://devguide.zineone.com/docs/zineone-api-specification
+component_count: 5

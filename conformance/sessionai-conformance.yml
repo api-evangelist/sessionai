@@ -1,0 +1,81 @@
+generated: '2026-08-13'
+method: searched
+source: https://sessionai.com/capabilities/privacy-and-fairness
+note: >-
+  No OpenAPI is published, so nothing here is derived from a spec. OAuth/OIDC conformance
+  is established from live authorization-server and protected-resource metadata; privacy
+  conformance from the provider's own published claims plus the CCPA opt-in/opt-out
+  endpoints that back them.
+standards:
+- id: oauth2
+  conforms: true
+  evidence: >-
+    RFC 6749 authorization-code flow advertised by the authorization server named in
+    Session AI's protected-resource metadata.
+  source: well-known/sessionai-oauth-authorization-server.json
+- id: oidc
+  conforms: true
+  evidence: OpenID Provider metadata served with issuer, jwks_uri, userinfo_endpoint and openid scope.
+  source: well-known/sessionai-oauth-authorization-server.json
+- id: rfc8414-authorization-server-metadata
+  conforms: true
+  evidence: /.well-known/oauth-authorization-server returns 200 with valid AS metadata.
+- id: rfc9728-protected-resource-metadata
+  conforms: true
+  evidence: >-
+    https://sessionai.com/.well-known/oauth-protected-resource returns 200 with resource,
+    authorization_servers and bearer_methods_supported; the MCP 401 advertises it via
+    WWW-Authenticate resource_metadata.
+- id: rfc7591-dynamic-client-registration
+  conforms: true
+  evidence: registration_endpoint published by the authorization server.
+- id: mcp
+  conforms: true
+  evidence: >-
+    Remote MCP endpoint at https://sessionai.com/mcp exposing Mcp-Session-Id and
+    Mcp-Protocol-Version via access-control-expose-headers.
+  source: mcp/sessionai-mcp.yml
+- id: rfc9457-problem-details
+  conforms: false
+  evidence: Errors use a custom {"message","status"} envelope, not application/problem+json.
+- id: openapi
+  conforms: false
+  evidence: No OpenAPI or Swagger document published on any host.
+- id: asyncapi
+  conforms: false
+  evidence: No AsyncAPI document published; the event surface is documented in prose only.
+- id: rfc9116-security-txt
+  conforms: false
+  evidence: /.well-known/security.txt returns 404 on every host.
+- id: ccpa
+  conforms: true
+  evidence: >-
+    Dedicated CCPA opt-in and opt-out REST endpoints (/public/api/v1/profile/optin and
+    /optout) documented in the developer guide.
+  source: https://devguide.zineone.com/docs/profile-opt-out-ccpa
+- id: gdpr
+  conforms: true
+  evidence: >-
+    Provider states it enables opt-in/opt-out/data requests in accordance with GDPR, CCPA
+    and other regional privacy laws; a documented "Forbidden Data" policy bars medical,
+    payment, income and known-minor data from the platform.
+  source: https://devguide.zineone.com/docs/forbidden-data
+compliance_program:
+  url: https://sessionai.com/capabilities/privacy-and-fairness
+  published: true
+  certifications: []
+  claims:
+  - claim: SOC 2 aligned
+    certified: false
+    note: >-
+      Stated as "SOC 2 aligned" on the platform integration page. That is an alignment
+      claim, not a published SOC 2 certification or an attestation report, and is recorded
+      as such. No trust center, audit report, or certificate is published — the
+      probe-security-programs.py sweep found no trust center on any host.
+    source: https://sessionai.com/capabilities/platform-integration
+  - claim: No PII processed
+    certified: false
+    source: https://sessionai.com/capabilities/privacy-and-fairness
+  - claim: Per-customer model isolation; data and models not shared with third parties
+    certified: false
+    source: https://sessionai.com/capabilities/privacy-and-fairness

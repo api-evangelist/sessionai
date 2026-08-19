@@ -1,0 +1,72 @@
+generated: '2026-08-13'
+method: searched
+source: https://docs.zineone.com/docs/webhook-receiver
+spec_type: none
+asyncapi_published: false
+asyncapi_note: >-
+  No AsyncAPI document is published on any Session AI or ZineOne host. The event surface
+  below is documented in prose only and is captured as a webhook/event catalog rather than
+  a fabricated spec.
+direction: inbound
+direction_note: >-
+  IMPORTANT — this is an INGEST surface, not outbound event notification. A Session AI
+  "Webhook Receiver" is a named REST endpoint the customer POSTs data INTO. Session AI
+  does not publish an outbound webhook catalog: no subscription API, no delivery retry
+  policy, and no signature verification scheme is documented anywhere in the developer
+  guide or user guide. Anyone reading this artifact as "Session AI will call my endpoint"
+  would be wrong.
+channels:
+- name: Webhook Receiver
+  type: inbound-http
+  description: >-
+    A named instance of a REST endpoint configured in the console to receive incoming data
+    into the Session AI cloud. Data must be JSON and is typically an event stream
+    describing user activity, real-time or historical.
+  endpoint: POST https://cloud.zineone.com/c3/public/api/v1/event?channel={channelname}
+  auth: apikey header
+  reference: https://docs.zineone.com/docs/webhook-receiver
+  event_types:
+  - type: per-user event
+    description: >-
+      Events attributable to one user — point-of-sale purchase transactions relayed by a
+      PoS listener, smartphone online transactions, or back-end transaction-processing
+      records. Mapped to an existing profile by a configured field mapping (e.g. User Id
+      mapped to the cid attribute in the payload).
+  - type: system event
+    description: >-
+      Events that apply to all users, e.g. market data describing stock price movement.
+      No per-user field mapping is applied.
+  configuration:
+    channel_name: Customer-chosen name, passed as the channel query parameter.
+    declared_events: >-
+      The channel declares the event names the source will push, as a comma-separated list.
+    preprocessing: >-
+      Optional "pre-process to normalize incoming data" code transforms the incoming
+      payload into platform events.
+- name: Device channels
+  type: sdk-ingest
+  description: >-
+    Event ingest from the HTML5, Android and iOS SDKs across phone, tablet and desktop
+    device channels.
+  reference: https://docs.zineone.com/docs/setting-up-sdks-for-devices
+- name: Batch collector
+  type: batch-ingest
+  description: Bulk/historical event ingest channel.
+  reference: https://docs.zineone.com/docs/batch-collector
+outbound_delivery:
+- name: Push notification
+  description: >-
+    Web and mobile push messages delivered from the Session AI cloud to the end user's
+    device — a message-delivery surface, not a developer webhook.
+  reference: https://docs.zineone.com/docs/configuring-push-notification
+- name: Connectors
+  description: >-
+    Console-configured connectors for moving data to external systems. Documented as UI
+    configuration; no public API or event schema is published for them.
+  reference: https://docs.zineone.com/docs/connectors
+event_schema:
+  reference: https://devguide.zineone.com/docs/ecommerce-event-schema-1
+  description: >-
+    Session AI publishes an ecommerce event schema page in the developer guide describing
+    the events the platform expects. It is prose and tables, not a machine-readable schema.
+channel_count: 3
