@@ -38,6 +38,19 @@ modified: '2026-08-13'
 tags:
 - Company
 - Artificial Intelligence
+- E-Commerce
+- Retail
+- Personalization
+- Marketing
+- Agentic AI
+- Decisioning
+- Customer Data
+- Event
+- Real-Time
+- MCP
+tags_raw:
+- Company
+- Artificial Intelligence
 - Ecommerce
 - Retail
 - Personalization
@@ -59,6 +72,12 @@ apis:
   humanURL: https://devguide.zineone.com/docs/rest-api-reference
   baseURL: https://cloud.zineone.com/c3
   tags:
+  - Event
+  - Customer Data
+  - Personalization
+  - Query
+  - Privacy
+  tags_raw:
   - Events
   - Customer Data
   - Personalization
