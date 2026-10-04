@@ -53,7 +53,7 @@ tags:
 - Retail
 - Personalization
 - Marketing
-- Agentic AI
+- AI Agents
 - Decisioning
 - Customer Data
 - Event
@@ -112,6 +112,9 @@ apis:
   humanURL: https://sessionai.com/capabilities/agentic-ai
   baseURL: https://sessionai.com/mcp
   tags:
+  - MCP
+  - AI Agents
+  tags_raw:
   - MCP
   - Agentic AI
   properties:
