@@ -1,0 +1,18 @@
+generated: '2026-10-12'
+method: none
+source:
+- https://zapier.com/apps/sessionai/integrations
+- https://zapier.com/apps/session-ai/integrations
+- https://n8n.io/integrations/sessionai/
+- https://composio.dev/toolkits/sessionai
+- https://monid.ai/tools/sessionai
+checked:
+- https://composio.dev/toolkits/sessionai
+- https://monid.ai/tools/sessionai
+- https://n8n.io/integrations/sessionai/
+- https://zapier.com/apps/session-ai/integrations
+- https://zapier.com/apps/sessionai/integrations
+summary: null
+marketplace_apps: []
+edges: []
+templates: []
