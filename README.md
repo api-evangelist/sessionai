@@ -1,4 +1,4 @@
-# Sessionai
+# Session AI
 
 <!-- API-EVANGELIST-PROVENANCE:BEGIN -->
 > ### About this repository
@@ -64,6 +64,126 @@
 > Full detail: **[Where this data comes from](https://apievangelist.com/about/where-our-data-comes-from)**
 <!-- API-EVANGELIST-PROVENANCE:END -->
 
-Sessionai is a company surfaced as a portfolio company of norwest-venture-partners and added to the API Evangelist network as a stub for enrichment. Sector: unknown. This profile is a lead awaiting the enrichment pipeline.
+Session AI (formerly ZineOne) is an ecommerce AI platform that uses agentic decisioning to optimize promotions and customer experiences in real time. Its Session Marketing Agent predicts in-session visitor intent and behavior, then delivers personalized offers, nudges, and messages to maximize revenue, conversions, and profit margins for retail, travel and hospitality, and telecom brands. The platform integrates via tag managers (Google Tag Manager, Tealium), a CDN-delivered HTML5/JavaScript SDK, Android and iOS SDKs, server-to-server REST calls, and prebuilt plugins/cartridges, advertising sub-50ms decision latency, no PII in scope, and SOC 2 aligned controls. Session AI publishes a public developer guide and REST API reference under its legacy ZineOne domain covering nine documented operations — send events, retrieve content, call microservices, stream and cube queries, CCPA profile opt-in/opt-out, and profile and activity retrieval — authenticated with an apikey header. It also operates an OAuth-protected remote MCP server at https://sessionai.com/mcp for agent access.
 
-Backed by: norwest-venture-partners — https://sessionai.com
+**Areas:** Company · Artificial Intelligence · E-Commerce · Retail · Personalization · Marketing · AI Agents · Decisioning · Customer Data · Event · Real-Time · MCP
+
+## Session AI on APIs.io
+
+Everything profiled for Session AI is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/sessionai/](https://apis.io/providers/sessionai/)** — or go straight to one of the APIs or properties below.
+
+### APIs (2)
+
+- [Session AI Platform REST API](https://apis.io/apis/sessionai/session-ai-platform-rest-api/) — Public REST API for the Session AI (ZineOne) platform. Documented operations cover sending events into the platform from any channel, retrieving hosted…
+- [Session AI MCP Server](https://apis.io/apis/sessionai/session-ai-mcp-server/) — Remote Model Context Protocol server operated by Session AI at https://sessionai.com/mcp. The endpoint answers with an RFC 9728 OAuth challenge…
+
+### Published properties
+
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
+
+#### AsyncAPI (1)
+
+Event-driven and webhook contracts.
+
+- [Sessionai Webhooks](https://apis.io/asyncapis/sessionai/sessionai-webhooks/)
+
+#### MCP servers (1)
+
+Model Context Protocol servers that expose the API to agents.
+
+- [Session AI](https://apis.io/servers/sessionai/session-ai/)
+
+#### Security (2)
+
+Authentication, trust centre, and vulnerability disclosure.
+
+- [Sessionai Authentication](https://apis.io/security/sessionai/sessionai-authentication/)
+- [Sessionai Domain Security](https://apis.io/security/sessionai/sessionai-domain-security/)
+
+#### OAuth scopes (1)
+
+The permissions the API asks for.
+
+- [Sessionai Scopes](https://apis.io/scopes/sessionai/sessionai-scopes/)
+
+#### Plans and pricing (1)
+
+Published plans, tiers and prices.
+
+- [Sessionai Plans Pricing](https://apis.io/plans/sessionai/sessionai-plans-pricing/)
+
+#### Rate limits (1)
+
+Published request limits.
+
+- [Sessionai Rate Limits](https://apis.io/rate-limits/sessionai/sessionai-rate-limits/)
+
+## Where to find this API
+
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
+
+- [Website](https://sessionai.com)
+- [Documentation](https://docs.zineone.com/)
+- [Getting started](https://devguide.zineone.com/docs/introduction-to-html5)
+- [API reference](https://devguide.zineone.com/docs/rest-api-reference)
+- [Support](https://sessionai.com/contact-us)
+- [Blog](https://sessionai.com/blog)
+- [Compliance](https://sessionai.com/capabilities/privacy-and-fairness)
+- [Terms of service](https://sessionai.com/terms)
+- [Privacy policy](https://sessionai.com/privacy-policy)
+- [Status](https://status.sessionai.com/)
+
+## API Evangelist rating
+
+**Kin Score 43.3** — developing · rubric 0.25.0 · scored 2026-10-23
+
+| Facet | Score |
+|---|---|
+| Discoverability | 75.0 |
+| Contract quality | 39.0 |
+| Contract governance | 18.2 |
+| Operational transparency | 23.7 |
+| Developer ergonomics | 52.4 |
+| Access clarity | 35.5 |
+
+**Agent readiness 32.2** — agent-ready
+
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | yes |
+| Agentic Access | — |
+| Reversibility Documented | — |
+| MCP Server | documented (partial credit) |
+| Auth Clarity | bearer (partial credit) |
+| Idempotency | — |
+| Error Semantics | documented (partial credit) |
+| OpenAPI Examples | — |
+| Rate Limit Signal | documented (partial credit) |
+| Event Surface Described | yes |
+| Agent Skills | — |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | — |
+| Delegated Identity | — |
+| Protected Resource Metadata | verified |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
+| Pagination Ratio | na |
+| Operation Distinctiveness | na |
+
+**Regulatory alignment 36.4** — Horizontal (data, software, accessibility, platform)
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/sessionai/](https://apis.io/providers/sessionai/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for Session AI: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/sessionai/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
